@@ -1,0 +1,1 @@
+import './components/page/style/common.css';
