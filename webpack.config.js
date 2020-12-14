@@ -4,7 +4,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].js',
-        publicPath: '/',
+        publicPath: 'dist/',
     },
     module: {
         rules: [
@@ -17,21 +17,24 @@ module.exports = {
                 use: ['style-loader', 'css-loader', 'less-loader'],
             },
             {
-                test:/\.(png|jpe?g|gif)$/i,
+                test: /\.(png|jpg|gif)$/i,
                 use: [
                     {
                         loader: 'url-loader',
                         options: {
-                            limit: 819,
-                        } 
-                    }
-                ]
+                            limit: 30720,
+                        },
+                    },
+                ],
             },
             {
-                test: /\.(png|jpe?g|gif)$/i,
+                test: /\.(png|jpg|gif)$/,
                 use: [
                     {
                         loader: 'file-loader',
+                        options: {
+                            name: 'imgs/[name].[hash:8].[ext]'
+                        }
                     },
                 ],
             },
